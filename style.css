@@ -1,13 +1,14 @@
 * {
     box-sizing: border-box;
-    margin: 5;
+    background: none;
+    margin: 0;
     padding: 0;
 }
 .main {
     background-image: linear-gradient(to bottom right, rgb(28, 131, 95), yellow);
     width: 350px;
     height: 450px;
-    border: 2px solid #212;
+    /* border: 2px solid #212; */
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
@@ -17,6 +18,8 @@
     padding-left: 24px;
     padding-right: 24px;
     padding-bottom: 0px;
+    font-size: 18px;
+    /* border-radius: 15px; */
 }
 .title {
     display: flex;
@@ -87,6 +90,8 @@
 .buybtn {
     display: flex;
     justify-content: center;
+    padding-bottom: 5px;
+
 }
 .buy {
     display: flex;
