@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Anthony Valdez, Christian Sansovich",
+    "version": "1.0.0",
+
+  
+    
+    "default_locale": "en",
+    "description": "A crypto trading extension",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "icons": {
+        "48": "assets/CTIcon.png"
+    }
+}

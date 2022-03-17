@@ -4,8 +4,9 @@
     padding: 0;
 }
 .main {
+    background-image: linear-gradient(to bottom right, rgb(28, 131, 95), yellow);
     width: 350px;
-    height: 350px;
+    height: 400px;
     border: 2px solid #212;
     display: flex;
     -webkit-box-pack: justify;
@@ -22,6 +23,7 @@
     font-family: 'Fredoka';
     font-weight: 500;
     font-size: 50;
+    color: whitesmoke;
     justify-content: center;
 }
 .dollarbox {
@@ -47,7 +49,7 @@
     font-family: 'Montserrat';
     font-size: 60px;
     text-align: left;
-    color: rgb(65, 120, 65);
+    color: rgb(255, 255, 255);
     font-weight: 400;
     justify-content: center;
     width: 150px;
@@ -59,10 +61,25 @@
     outline: none;
     background: rgb(var(--gray0));
 }
+.prices {
+    font-family: 'Fredoka';
+}
+#ETHprice {
+    padding-left: 30px;
+}
 .asset{
     font-family: 'Fredoka';
 }
 #asset{
+    font-family: 'Fredoka';
+}
+.positions {
+    font-family: 'Fredoka';
+}
+#ETHpos {
+    padding-left: 10px;
+}
+.BP {
     font-family: 'Fredoka';
 }
 .buybtn {
@@ -75,7 +92,7 @@
     width: 250;
     height: 50;
     opacity: 0.75;
-    background-color: green;
+    background-color: rgb(102, 191, 102);
     border-radius: 8px;
 }
 .buywords {
@@ -85,6 +102,7 @@
     font-family: 'Fredoka', "Segoe UI";
     /* font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; */
     font-size: 30px;
+    color: white;
   
 }
 /* Hey - i'm in the zoom room

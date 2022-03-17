@@ -3,9 +3,8 @@
     <title>CoinTrade</title>
      <meta charset="utf-8">
      <link rel="stylesheet" type="text/css" href="style.css">
-     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-     <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">  
+     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+     <script src="main.js"></script>  
     </head>
 <body>
     <div class="main" style="width: 350px">
@@ -15,22 +14,30 @@
            <span class="dollasign">$</span>
            <input minlength="1" inputmode="decimal" placeholder="0" class="input" value="">
         </div>
+        <div class="prices">
+            <span id="BTC">BTC Price:</span>
+            <span id="ETH">ETH Price:</span>
+        </div>
         <div class="asset">
             <label for="asset">Crypto Assets</label>
            <select name = "Assets" id="asset">
                <option value="BTC">Bitcoin</option>
                <option value="ETH">Etherium</option>
-               <option value="USDT">Tether</option>
-               <option value="BNB">Binance Coin</option>
-               <option value="USDC">U.S. Dollar Coin</option>
-
            </select> 
+        </div>
+        <div class="positions">
+            <span id="btcholdings">BTC Balance:</span>
+            <span id="ethholdings">ETH Balance:</span>
+        </div>
+        <div class="BP">
+            <span id="buyingpower">Buying Power:</span>
         </div>
         <div class="buybtn">
             <button class="buy">
                <span class="buywords">Buy</span> 
             </button>
         </div>
+        
 
     </div>
 </body>
