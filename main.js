@@ -1,6 +1,4 @@
 //API Keys
-import fetch from "node-fetch";
-globalThis.fetch = fetch
 const endpointURL = 'https://paper-api.alpaca.markets'
 const publicKey = 'PK6BDYN5QUXQIDY7022Y'
 const privateKey = 'vMvR4rjJ41sb2aLNKAXUTT46YCfA8lJMNST8FP2M'
@@ -18,8 +16,21 @@ const ordersURL = endpointURL + ordersInAccount;
 const streamURL = 'wss://stream.data.alpaca.markets/v1beta1/crypto';
 
 //Driver Methods
-liveBitcoinPull();
-setInterval(updateData, 1000);
+document.addEventListener('DOMContentLoaded', () => {
+  const buyButton = document.querySelector('.buy');
+  const crypto = document.querySelector('#asset');
+  const amount = document.querySelector('.input');
+
+  const notional = amount.value;
+  const symbol = crypto.value;
+
+  buyButton.addEventListener('click', buy(notional, symbol));
+  
+  liveBitcoinPull();
+  setInterval(updateData, 5000);
+});
+
+
 
 //Sets up stream and 
 function updateData() {
@@ -67,33 +78,39 @@ function InfoPull(url) {
   });
 }
 
+async function asyncInfoPull(url) {
+  const response = await fetch(url, {
+    method : 'GET',
+    headers : headers
+  });
+
+  const data = response.json();
+  
+  if (Array.isArray(data)) return positionInfoPopulate(data); 
+    else return accountInfoPopulate(data);
+}
+
 function positionInfoPopulate(accountInfo) {
   const BTHholdings = document.querySelector('#btcholdings');
   const ETHholdings = document.querySelector('#ethholdings');
   
   let BTHp = 0;
   let ETHp = 0;
-
+  console.log(accountInfo);
   for (let pos of accountInfo) {
     if (pos.symbol === 'BTCUSD') BTHp = pos.qty;
     if (pos.symbol === 'ETHUSD') ETHp = pos.qty;
   }
   
 
-  BTHholdings.innerText = `Total Bitcoin Held: ${BTHp}`;
-  ETHholdings.innerText = `Total Etherium Held: ${ETHp}`;
+  BTHholdings.innerText = `BTC Balance: ${BTHp}`;
+  ETHholdings.innerText = `ETH Balance: ${ETHp}`;
 }
 
 function accountInfoPopulate(accountInfo) {
   const buyingPower = document.querySelector('#buyingpower');
-  const cash = document.querySelector('#cash');
-  const equity = document.querySelector('#equity');
-  const currency = document.querySelector('#currency');
 
   buyingPower.innerText = `Buying power: ${accountInfo.buying_power}`;
-  cash.innerText = `Cash: ${accountInfo.cash}`;
-  equity.innerText = `Equity: ${accountInfo.equity}`;
-  currency.innerText = `Currency: ${accountInfo.currency}`;
 }
 
 
@@ -134,12 +151,3 @@ function liveBitcoinPull() {
     return [btc, eth];
   }
 }
-
-/**
- * BTC price = BTC
- * ETH price = ETH
- * buyingpower = buyingpower
- * 
- * # of bitcoin = btcholdings
- * # of etherium = ethholdings
- */
