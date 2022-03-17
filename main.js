@@ -31,10 +31,35 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   liveBitcoinPull();
-  setInterval(updateData, 5000);
+  setInterval(updateData, 7000);
 });
 
+// Popup indicating purchase successful
+function purchaseComplete(data) {
+  const coinPurchased = (data.symbol === 'BTCUSD') ? 'Bitcoin' : 'Etherium';
+  const qty = data.qty;
+  const pricing = data.notional;
 
+  const purchaseConfirmation = document.createElement('div');
+  purchaseConfirmation.setAttribute('class', 'purchase-confirmation fade animate');
+  purchaseConfirmation.innerHTML = `<span id="PC">Purchase Complete!</span><br><span id="purch">You purchased ${qty} ${coinPurchased} </span><br><span id="total">Total Cost: $${pricing}</span>`;
+
+  const main = document.querySelector('.main');
+  const title = document.querySelector('.title');
+
+  main.appendChild(purchaseConfirmation, title);
+
+  setTimeout((node) => {
+    node.remove();
+  }, 4000, purchaseConfirmation);
+}
+
+
+/**
+ * Order ID - client_order_id
+ * Quantity - qty
+ * Type - symbol
+ */
 
 //Sets up stream and 
 function updateData() {
@@ -70,6 +95,7 @@ async function buyCoins(url, data) {
   }).then((response) => {
     if (response.status === 'accepted' || response.status === 'filled') {
       console.log("Order accepted");
+      purchaseComplete(response);
     };
   })
 }
@@ -124,7 +150,6 @@ function liveBitcoinPull() {
   const listener = new WebSocket(streamURL);
   
   listener.addEventListener('message', (msg) => {
-    console.log(msg.data);
     if (msg.data === '[{"T":"success","msg":"connected"}]') {
       listener.send(`{"action":"auth","key":"${publicKey}","secret":"${privateKey}"}`)
     }
@@ -138,8 +163,6 @@ function liveBitcoinPull() {
     const BTCPrice = document.querySelector('#BTC');
     const ETHPrice = document.querySelector('#ETH');
     const lastPrice = JSON.parse(msg.data);
-
-    console.log(msg);
     
     const [BTCp, ETHp] = getPrice(lastPrice);
     
@@ -182,3 +205,35 @@ function liveBitcoinPull() {
  *  -either dollars or # of coins
  * 
  */
+// asset_class: "crypto"
+// asset_id: "64bbff51-59d6-4b3c-9351-13ad85e3c752"
+// canceled_at: null
+// client_order_id: "584dd332-7f18-4023-a528-788024b7b800"
+// created_at: "2022-03-17T17:34:36.133327407Z"
+// expired_at: null
+// extended_hours: false
+// failed_at: null
+// filled_at: null
+// filled_avg_price: null
+// filled_qty: "0"
+// hwm: null
+// id: "1f3734d5-af6b-4b9d-96e3-cfe584ae39a9"
+// legs: null
+// limit_price: null
+// notional: "100"
+// order_class: ""
+// order_type: "market"
+// qty: "0.0024"
+// replaced_at: null
+// replaced_by: null
+// replaces: null
+// side: "buy"
+// status: "accepted"
+// stop_price: null
+// submitted_at: "2022-03-17T17:34:36.131593757Z"
+// symbol: "BTCUSD"
+// time_in_force: "day"
+// trail_percent: null
+// trail_price: null
+// type: "market"
+// updated_at: "2022-03-17T17:34:36.133327407Z"
