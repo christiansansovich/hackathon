@@ -154,9 +154,9 @@
 @keyframes fadeIn {
     0% {
         opacity: 0;
-    } 20% {
+    } 10% {
         opacity: 1;
-    } 80% {
+    } 85% {
         opacity: 1;  
     } 100% {
         opacity: 0;
@@ -169,6 +169,6 @@
 
 .animate {
     animation-fill-mode: both;
-    animation-duration: 4s;
-    animation-delay: 1s;
+    animation-duration: 8s;
+    animation-delay: 0s;
 }
