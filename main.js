@@ -116,7 +116,7 @@ function positionInfoPopulate(accountInfo) {
 function accountInfoPopulate(accountInfo) {
   const buyingPower = document.querySelector('#buyingpower');
 
-  buyingPower.innerText = `Buying power: ${accountInfo.buying_power}`;
+  buyingPower.innerText = `Cash Balance: ${accountInfo.buying_power}`;
 }
 
 

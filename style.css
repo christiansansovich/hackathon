@@ -5,7 +5,7 @@
     padding: 0;
 }
 .main {
-    background-image: linear-gradient(to bottom right, rgb(28, 131, 95), yellow);
+    background-image: linear-gradient(to bottom right, white, rgb(177, 228, 177), rgb(170, 228, 105), rgb(221, 255, 0));
     width: 350px;
     height: 450px;
     /* border: 2px solid #212; */
@@ -19,15 +19,23 @@
     padding-right: 24px;
     padding-bottom: 0px;
     font-size: 18px;
-    /* border-radius: 15px; */
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+    /*   */
 }
 .title {
     display: flex;
-    font-family: 'Fredoka';
+    /* font-family: 'Fredoka'; */
     font-weight: 500;
     font-size: 50;
-    color: whitesmoke;
+    /* color: whitesmoke; */
     justify-content: center;
+}
+#coin {
+    color: rgb(109, 196, 95);
+}
+#trade {
+    color: white;
 }
 .dollarbox {
     display: flex;
@@ -66,31 +74,29 @@
     background: rgb(var(--gray0));
 }
 
-.prices {
-    font-family: 'Fredoka';
-}
 #ETHprice {
     padding-left: 30px;
 }
-.asset{
+/* .asset{
     font-family: 'Fredoka';
-}
+} */
 #asset{
-    font-family: 'Fredoka';
+    /* font-family: 'Fredoka'; */
+    border-radius: 15px;
 }
-.positions {
+/* .positions {
     font-family: 'Fredoka';
-}
+} */
 #ETHpos {
     padding-left: 10px;
 }
-.BP {
+/* .BP {
     font-family: 'Fredoka';
-}
+} */
 .buybtn {
     display: flex;
     justify-content: center;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 
 }
 .buy {
@@ -106,8 +112,9 @@
     /* padding-left: 90;  */
     padding-bottom: 10;
     display: flex;
-    font-family: 'Fredoka', "Segoe UI";
+    font-family: 'Quicksand', "Segoe UI";
     /* font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; */
     font-size: 30px;
+    font-weight: 500;
     color: white;
 }
