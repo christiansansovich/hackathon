@@ -156,7 +156,7 @@
         opacity: 0;
     } 10% {
         opacity: 1;
-    } 85% {
+    } 80% {
         opacity: 1;  
     } 100% {
         opacity: 0;
@@ -169,6 +169,6 @@
 
 .animate {
     animation-fill-mode: both;
-    animation-duration: 8s;
-    animation-delay: 0s;
+    animation-duration: 6s;
+    animation-delay: .5s;
 }
